@@ -1,0 +1,44 @@
+name: "✨ New specialist / feature"
+description: Propose a new specialist skill, or an enhancement to the plugin.
+title: "[feature] <short summary>"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "For a **new specialist**, remember the behavioral bar: scope first, route off-scope, cite every recommendation, carry honesty, hold the guardrails. Regulated archetype overlays are out of scope for this public repo."
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you proposing?
+      options:
+        - A new specialist skill
+        - An enhancement to an existing skill
+        - A packaging / install / docs improvement
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+      description: Who asks for this, and what can't the current six skills do for them?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope + seams
+      description: For a new specialist — what's in scope, and which asks does it route to which neighbour?
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence base
+      description: Is there a public, citable corpus to ground it? Point to sources if you have them.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Fit checks
+      options:
+        - label: It can be grounded in public, citable evidence (not private/client data)
+        - label: It fits the open-core sampler (not a proprietary regulated overlay)
+        - label: It respects the aggregates-only boundary and the no-dark-patterns rule

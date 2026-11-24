@@ -1,0 +1,69 @@
+name: "📚 Evidence / corpus unit"
+description: Propose a new corpus unit or knowledge card, fix one, or flag a stale/weak source.
+title: "[corpus] <skill>: <claim in a few words>"
+labels: ["corpus"]
+body:
+  - type: markdown
+    attributes:
+      value: "Everything here must be **publicly citable**. No private or client data. See [CONTRIBUTING](../blob/main/CONTRIBUTING.md) for the unit shape."
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill's corpus?
+      options:
+        - gf-diagnose (knowledge cards)
+        - gf-activation
+        - gf-retention
+        - gf-monetization
+        - gf-acquisition
+        - gf-referral
+    validations:
+      required: true
+  - type: dropdown
+    id: change
+    attributes:
+      label: Kind of change
+      options:
+        - New unit / card
+        - Correct an existing unit (wrong or outdated)
+        - Flag a stale or weak source
+        - Add a stronger / primary source to an existing unit
+    validations:
+      required: true
+  - type: input
+    id: unit_id
+    attributes:
+      label: Unit id (existing, or proposed)
+      placeholder: "ret-tactic-reengagement-lifecycle"
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: The claim (one principle line) + how to apply
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Public source(s)
+      description: Author / org — title (year) — URL. Primary sources preferred.
+    validations:
+      required: true
+  - type: dropdown
+    id: strength
+    attributes:
+      label: Evidence strength
+      options:
+        - proven (causal / well-established)
+        - correlational
+        - bundled (effect not isolated)
+        - second-hand
+        - exploratory
+    validations:
+      required: true
+  - type: textarea
+    id: caution
+    attributes:
+      label: Caution / caveat
+      description: Definition caveats, ethics line, or where it doesn't apply.

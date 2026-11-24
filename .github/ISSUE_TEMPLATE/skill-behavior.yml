@@ -1,0 +1,62 @@
+name: "🩺 Skill behavior"
+description: A skill gave a wrong, ungrounded, out-of-scope, or unsafe answer.
+title: "[behavior] <skill>: <short summary>"
+labels: ["behavior"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for the report. The skills are meant to stay scoped, cited, and honest — tell us where this one slipped."
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill?
+      options:
+        - gf-diagnose
+        - gf-activation
+        - gf-retention
+        - gf-monetization
+        - gf-acquisition
+        - gf-referral
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong?
+      options:
+        - Ungrounded claim (no citation, or made up a fact)
+        - Cited an id that doesn't resolve to a real unit/card
+        - Restated a source instead of citing it (HR4)
+        - Answered out of scope instead of routing to the right specialist
+        - Over-claimed (asserted where evidence is weak/correlational)
+        - Missed a guardrail (dark pattern, aggregates-only boundary)
+        - Wrong or misleading analysis
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: What you asked
+      description: The prompt (and any pasted CSV / data — aggregates only, no real user data).
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: got
+    attributes:
+      label: What it did
+      description: Paste the relevant part of the skill's answer.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should have done
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Install method + Claude Code version
+      placeholder: "plugin marketplace / manual copy · claude-code x.y.z"
