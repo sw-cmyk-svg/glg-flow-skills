@@ -1,0 +1,106 @@
+# Core metric spec — the single source of truth (HARD-RULES.md rule 4).
+# Tool-agnostic: adapters render these, connectors populate them,
+# playbooks and knowledge cards cite them by id.
+version: 0.1.0
+metrics:
+  - id: unique_visitors
+    name: Unique visitors
+    stage: acquisition
+    definition: Distinct people reaching the product surface (site or app) per week.
+    formula: count_distinct(visitor_id) per iso_week
+    sources: [pageview_or_first_open_event]
+    why_it_matters: Top-of-funnel volume; denominator for every acquisition rate.
+    unit: count
+
+  - id: signup_rate
+    name: Visitor→signup conversion
+    stage: acquisition
+    definition: Share of weekly unique visitors who create an account.
+    formula: new_signups / unique_visitors
+    sources: [pageview_or_first_open_event, signup_event]
+    why_it_matters: Measures message-market fit of the acquisition surface.
+    unit: percent
+
+  - id: new_signups
+    name: New signups
+    stage: acquisition
+    definition: Accounts created per week.
+    formula: count_distinct(user_id where signup in iso_week)
+    sources: [signup_event]
+    why_it_matters: Cohort entry point; denominator for activation.
+    unit: count
+
+  - id: activation_rate
+    name: Activation rate
+    stage: activation
+    definition: >
+      Share of new signups reaching the product's activation event within
+      7 days of signup. The activation event is defined per client in the
+      overlay; the core default is "completed first core action".
+    formula: activated_within_7d / new_signups (by signup cohort week)
+    sources: [signup_event, activation_event]
+    why_it_matters: The strongest early predictor of retention; the first leak to check.
+    unit: percent
+
+  - id: time_to_activation
+    name: Median time to activation
+    stage: activation
+    definition: Median hours from signup to activation event, per signup cohort.
+    formula: median(activation_ts - signup_ts)
+    sources: [signup_event, activation_event]
+    why_it_matters: Long time-to-value predicts drop-off even among eventual activators.
+    unit: hours
+
+  - id: w1_retention
+    name: Week-1 retention
+    stage: retention
+    definition: Share of a signup cohort active in days 7–13 after signup.
+    formula: active_days_7_to_13 / cohort_size
+    sources: [signup_event, any_activity_event]
+    why_it_matters: First repeat-usage signal; shape of the curve matters more than the level.
+    unit: percent
+
+  - id: w4_retention
+    name: Week-4 retention
+    stage: retention
+    definition: Share of a signup cohort active in days 28–34 after signup.
+    formula: active_days_28_to_34 / cohort_size
+    sources: [signup_event, any_activity_event]
+    why_it_matters: Where retention curves flatten (or don't); the habit signal.
+    unit: percent
+
+  - id: weekly_active_users
+    name: Weekly active users
+    stage: retention
+    definition: Distinct users with any core activity event in the iso week.
+    formula: count_distinct(user_id with activity in iso_week)
+    sources: [any_activity_event]
+    why_it_matters: The base the business compounds on; trend beats level.
+    unit: count
+
+  - id: paying_conversion
+    name: Conversion to paying
+    stage: revenue
+    definition: Share of a signup cohort that has made any payment by day 30.
+    formula: payers_by_day_30 / cohort_size
+    sources: [signup_event, payment_event]
+    why_it_matters: Ties the funnel to money; the metric a P&L owner reads first.
+    unit: percent
+
+  - id: weekly_revenue
+    name: Weekly revenue
+    stage: revenue
+    definition: Total recognized payment value per iso week.
+    formula: sum(payment_value) per iso_week
+    sources: [payment_event]
+    why_it_matters: Ground truth the whole spec must reconcile against.
+    unit: currency
+
+  - id: arpu
+    name: Average revenue per weekly active user
+    stage: revenue
+    definition: Weekly revenue divided by weekly active users.
+    formula: weekly_revenue / weekly_active_users
+    sources: [payment_event, any_activity_event]
+    why_it_matters: Monetization density; separates growth in users from growth in value.
+    unit: currency

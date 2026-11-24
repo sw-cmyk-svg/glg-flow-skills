@@ -1,0 +1,32 @@
+# PLG SaaS archetype overlay — first archetype per spec open-question 1.
+# Overrides sharpen core definitions; metrics add archetype-specific ones.
+archetype: plg-saas
+extends: core@0.1.0
+overrides:
+  - id: activation_rate
+    definition: >
+      Share of new signups reaching the product's aha event within 3 days.
+      For PLG the aha event must be a value moment (e.g. "created first
+      project AND invited a teammate"), never a setup step.
+  - id: paying_conversion
+    definition: >
+      Share of a signup cohort converting to a paid plan by day 30
+      (self-serve checkout), split free-tier vs. trial starts.
+metrics:
+  - id: trial_to_paid
+    name: Trial→paid conversion
+    stage: revenue
+    definition: Share of started trials converting to paid within trial length + 7 days.
+    formula: paid_conversions / trials_started (by trial-start cohort)
+    sources: [trial_start_event, payment_event]
+    why_it_matters: The PLG revenue lever; benchmarked separately from freemium conversion.
+    unit: percent
+
+  - id: expansion_signups
+    name: Invited-user signups
+    stage: acquisition
+    definition: New signups arriving via in-product invitations per week.
+    formula: count_distinct(user_id where signup_source = invite)
+    sources: [signup_event, invite_event]
+    why_it_matters: The PLG loop — product usage generating acquisition.
+    unit: count

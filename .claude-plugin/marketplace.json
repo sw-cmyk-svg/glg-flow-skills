@@ -1,0 +1,20 @@
+{
+  "name": "glg-flow",
+  "owner": {
+    "name": "Galangal Flow",
+    "url": "https://github.com/sw-cmyk-svg"
+  },
+  "metadata": {
+    "description": "Galangal Flow — public growth-specialist skills (open-core sampler).",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "glg-flow-growth-specialists",
+      "source": "./",
+      "description": "Funnel diagnosis + the AARRR growth-specialist suite (activation, retention, monetization, acquisition, referral) as installable, evidence-grounded skills.",
+      "license": "MIT",
+      "keywords": ["growth", "plg", "saas", "aarrr", "funnel"]
+    }
+  ]
+}

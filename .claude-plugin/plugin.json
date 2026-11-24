@@ -1,0 +1,10 @@
+{
+  "name": "glg-flow-growth-specialists",
+  "version": "0.1.0",
+  "description": "Six scope-disciplined, evidence-grounded growth specialists for PLG-SaaS: funnel diagnosis plus the AARRR suite (activation, retention, monetization, acquisition, referral). Public sampler of the Galangal Flow method — grounded in a bundled, cited public corpus; aggregates-only; honest about uncertainty.",
+  "author": { "name": "Galangal Flow" },
+  "homepage": "https://github.com/sw-cmyk-svg/glg-flow-skills",
+  "repository": "https://github.com/sw-cmyk-svg/glg-flow-skills",
+  "license": "MIT",
+  "keywords": ["growth", "plg", "saas", "aarrr", "activation", "retention", "monetization", "acquisition", "referral", "funnel", "analytics"]
+}
