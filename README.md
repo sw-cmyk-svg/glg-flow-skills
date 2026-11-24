@@ -81,6 +81,11 @@ examples/
 Every knowledge card and corpus unit carries its own `provenance` and `sources` — this is
 **public, cited evidence**, not model memory.
 
+## License
+
+MIT — see [`LICENSE`](LICENSE). Use, modify, and redistribute freely; the bundled knowledge
+cards and corpus units are public, cited evidence.
+
 ---
 *Galangal Flow is a per-client growth-OS assembly kit. This repo is the open sampler of its
 method. Full archetype overlays + certified instances are delivered per engagement.*
