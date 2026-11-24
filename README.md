@@ -5,7 +5,7 @@
 
 Six installable [Claude skills](https://docs.claude.com/en/docs/claude-code/skills), packaged as
 one plugin, that turn Claude into a **scope-disciplined, evidence-grounded growth specialist**
-instead of a general chat. This is the **public PLG-SaaS sampler** — it shows the method; it is not
+instead of a general chat. This is the **public sampler** — it shows the method; it is not
 the full product.
 
 - **`gf-diagnose`** — diagnoses a growth funnel from **aggregate-only** weekly CSVs (funnel /
@@ -26,8 +26,8 @@ with `gf-diagnose` for the data-analysis step.
 **Is:** the general PLG-SaaS version, grounded in a **public** knowledge base, so you can feel the
 difference vs. a blank chat — right frame, cited claims, scope discipline, honesty about uncertainty.
 
-**Isn't:** a certified client instance. The proprietary layer — the regulated **archetype overlays**
-(digital bank/wallet, betting, e-commerce), the full corpus, the live-data connector with its enforced
+**Isn't:** a certified client instance. The proprietary version — including regulated **archetype overlays**
+(digital bank/wallet, betting, e-commerce), the full corpus,  live-data connectors with its enforced
 data boundary, and the done-for-you stamping/handoff — is not in this sampler. On a regulated vertical
 this public corpus is deliberately thin, and the skills say so.
 
