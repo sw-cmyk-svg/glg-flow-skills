@@ -1,5 +1,8 @@
 # Galangal Flow — growth specialist skills (public sampler)
 
+[![Install as a Claude Code plugin](https://img.shields.io/badge/Claude_Code-install_plugin-d97757?logo=anthropic&logoColor=white)](#install)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Six installable [Claude skills](https://docs.claude.com/en/docs/claude-code/skills), packaged as
 one plugin, that turn Claude into a **scope-disciplined, evidence-grounded growth specialist**
 instead of a general chat. This is the **public PLG-SaaS sampler** — it shows the method; it is not
